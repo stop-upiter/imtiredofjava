@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  */
 public class ModifiedFileIterator extends FileIterator {
     /**
-     * Конструктор итератора по фпйлу.
+     * Конструктор итератора по файлу.
      *
      * @param filePath путь к файлу для итерации.
      * @throws FileNotFoundException если по пути filepath нет файла.
