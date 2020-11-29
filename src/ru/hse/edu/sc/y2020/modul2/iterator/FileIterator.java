@@ -13,7 +13,7 @@ public class FileIterator implements Iterator<String>, Closeable {
     /**
      * Поток для чтения из файла.
      */
-    private BufferedInputStream bufferedInputStream;
+    protected BufferedInputStream bufferedInputStream;
 
     /**
      * Путь к читаемому файлу.
