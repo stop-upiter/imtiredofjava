@@ -19,6 +19,10 @@ class FileIteratorTest {
             "iterator/fileIteratorTests/test3.txt";
     private final String textTestFilePath = "./test/ru/hse/edu/sc/y2020/modul2/" +
             "iterator/fileIteratorTests/test4.txt";
+    private final String russianAlphabetTestFilePath = "./test/ru/hse/edu/sc/y2020/modul2/" +
+            "iterator/fileIteratorTests/test5.txt";
+    private final String russianTextTestFilePath = "./test/ru/hse/edu/sc/y2020/modul2/" +
+            "iterator/fileIteratorTests/test6.txt";
 
     @Test
     void createNull(){
@@ -74,6 +78,27 @@ class FileIteratorTest {
         fileIterator.close();
     }
 
+    @Test
+    void readRussianAlphabet() throws IOException {
+        ModifiedFileIterator modifiedFileIterator = new ModifiedFileIterator(russianAlphabetTestFilePath);
+        assertDoesNotThrow(()->modifiedFileIterator.forEachRemaining(System.out::println));
+        modifiedFileIterator.restart();
+        assertEquals("Аа", modifiedFileIterator.next());
+        modifiedFileIterator.restart();
+        modifiedFileIterator.forEachRemaining((s -> counter++));
+        assertEquals(34, counter);
+        modifiedFileIterator.close();
+    }
+
+    @Test
+    void readRussianText() throws IOException {
+        ModifiedFileIterator modifiedFileIterator = new ModifiedFileIterator(russianTextTestFilePath);
+        assertDoesNotThrow(()->modifiedFileIterator.forEachRemaining(System.out::println));
+        modifiedFileIterator.restart();
+        modifiedFileIterator.forEachRemaining((s -> counter++));
+        assertEquals(6, counter);
+        modifiedFileIterator.close();
+    }
 
 
 }
